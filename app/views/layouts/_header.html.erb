@@ -9,6 +9,12 @@
     <li>
       <%= link_to("ログアウト", "/users/sign_out", method: :delete, data: {confirm: "本当にログインしますか？"}) %>
     </li>
+    <!--<li>-->
+    <!--  <%#= link_to new_question_answer_path(question.id) do %>-->
+    <!--  <p>回答する</p>-->
+    <!--  <%# end %>-->
+
+    <!--</li>-->
 
     <% elsif admin_signed_in? %>
     <li>
