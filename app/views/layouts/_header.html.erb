@@ -1,0 +1,32 @@
+<header>
+  <div class="header-logo">
+    number two
+  </div>
+
+
+  <ul>
+    <% if user_signed_in? %>
+    <li>
+      <%= link_to("ログアウト", "/users/sign_out", method: :delete, data: {confirm: "本当にログインしますか？"}) %>
+    </li>
+
+    <% elsif admin_signed_in? %>
+    <li>
+      <%= link_to("質問作成", "/admin/questions/new") %>
+    </li>
+    <li>
+      <%= link_to("ログアウト", "/admin/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %>
+    </li>
+
+    <% else %>
+    <li>
+      <%= link_to("新規登録", "/users/sign_up") %>
+    </li>
+    <li>
+      <%= link_to("ログイン", "/users/sign_in") %>
+    </li>
+
+    <% end %>
+  </ul>
+</header>
+

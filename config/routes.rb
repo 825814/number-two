@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get '/' => "homes#top"
+    get '/admin' => "homes#top"
     resources :questions, only: [:new, :create]
     resources :choices, only: [:new, :create, :index]
 
