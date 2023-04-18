@@ -25,11 +25,12 @@ class Public::AnswersController < ApplicationController
     @answers = current_user.answers
     @answer = Answer.new(answer_params)
     @question = Question.find(params[:question_id])
+   
   end
 
 private
   def answer_params
-    params.require(:answer).permit(:comment, :choice_id)
+    params.require(:answer).permit(:comment, :choice_id, :question_id)
   end
 
 end
