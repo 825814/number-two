@@ -7,11 +7,13 @@ class Public::AnswersController < ApplicationController
   end
 
   def create
-    @answer = Answer.new(answer_params)
+    @answer = current_user.answers.new(answer_params)
+    # binding.pry
+    # @answer = Answer.new(answer_params)
+    # @answer.user_id = current_user.id
+    # @answer.question_id = params[:answer][:question_id]
+    # @answer.choice_id = params[:answer][:choice_id]
 
-    @answer.user_id = current_user.id
-    @answer.question_id = params[:question_id]
-    @answer.choice_id = params[:choice_id]
     if @answer.save
       flash[:notice] = "成功！"
       redirect_to("/questions/complete")
@@ -24,13 +26,14 @@ class Public::AnswersController < ApplicationController
   def confirm
     @answers = current_user.answers
     @answer = Answer.new(answer_params)
-    @question = Question.find(params[:question_id])
-   
+    # @question = Question.find(params[:id])
+    
+
   end
 
 private
   def answer_params
-    params.require(:answer).permit(:comment, :choice_id, :question_id)
+    params.require(:answer).permit(:comment, :choice_id, :question_id, :user_id)
   end
 
 end
