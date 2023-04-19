@@ -2,7 +2,7 @@
 
 <%#= @question.answers.each do |answer| %>
 
-<%= @answer.question %>
+<%= @answer.question.question %>
 <%#= @answer.choice_id %><%= @answer.choice.choice %>
 <%= @answer.comment %>
 
@@ -10,11 +10,12 @@
 
 
 
-<%#= form_with(model: [@question, @answer], method: :post) do |f| %>
+
 <%= form_with(model: [@question, @answer], url: question_answers_path(@question), method: :post) do |f| %>
 
 <%= f.hidden_field :comment %>
 <%= f.hidden_field :choice_id %>
+<%= f.hidden_field :question_id, value: @question.id %>
 
 
 <%= f.submit "確定する" %>

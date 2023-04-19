@@ -4,6 +4,9 @@ class Public::AnswersController < ApplicationController
   def new
     @question = Question.find(params[:question_id])
     @answer = Answer.new
+
+    @question_1 = Question.find(1)
+    @question_2 = Question.find(2)
   end
 
   def create
@@ -20,7 +23,8 @@ class Public::AnswersController < ApplicationController
 
     if @answer.save!
       flash[:notice] = "成功！"
-      redirect_to("/questions/complete")
+      # redirect_to complete_path
+       redirect_to questions_path
     else
       flash.now[:alert] = "失敗！"
       render "new"
@@ -30,7 +34,7 @@ class Public::AnswersController < ApplicationController
   def confirm
     # @answers = current_user.answers
     @answer = Answer.new(answer_params)
-    @question = Question.find(params[:question_id])
+    @question = Question.find(@answer.question_id)
 
 
 
