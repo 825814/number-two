@@ -7,14 +7,18 @@ class Public::AnswersController < ApplicationController
   end
 
   def create
-    @answer = current_user.answers.new(answer_params)
-    # binding.pry
-    # @answer = Answer.new(answer_params)
-    # @answer.user_id = current_user.id
-    # @answer.question_id = params[:answer][:question_id]
-    # @answer.choice_id = params[:answer][:choice_id]
+    # @question = Question.find(params[:question_id])
+    # @answer = current_user.answers.new(answer_params)
 
-    if @answer.save
+
+    @answer = Answer.new(answer_params)
+
+    @answer.user_id = current_user.id
+
+    @answer.question_id = params[:answer][:question_id]
+    @answer.choice_id = params[:answer][:choice_id]
+
+    if @answer.save!
       flash[:notice] = "成功！"
       redirect_to("/questions/complete")
     else
@@ -24,10 +28,11 @@ class Public::AnswersController < ApplicationController
   end
 
   def confirm
-    @answers = current_user.answers
+    # @answers = current_user.answers
     @answer = Answer.new(answer_params)
-    # @question = Question.find(params[:id])
-    
+    @question = Question.find(params[:question_id])
+
+
 
   end
 

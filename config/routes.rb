@@ -15,9 +15,12 @@ Rails.application.routes.draw do
     post '/answers/confirm' => 'answers#confirm', as: 'confirm'
     get '/answers/complete' => 'answers#complete', as: 'complete'
 
+
     resources :questions do
       resources :answers, only: [:new, :create]
+
     end
+    # post '/answers' => 'answers#create'
 
   end
 

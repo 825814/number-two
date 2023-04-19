@@ -1,0 +1,13 @@
+admin answers show
+
+<%= @question.question %>
+
+<%= @choice.choice %>
+
+
+<!--？-->
+<% @answers.each do |answer| %>
+
+<%= answer.comment %>
+
+<% end %>

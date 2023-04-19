@@ -1,7 +1,7 @@
 <p><%= @question.question %></p>
 
 <div>
-
+　<%#= form_with(model: [@question, @answer], url: question_answers_path(question_id) method: :post) do |f| %>
   <%= form_with(model: [@question, @answer], url: confirm_path, method: :post) do |f| %>
 
     <div>
@@ -16,10 +16,18 @@
       <%= f.label :comment, "理由" %><br>
       <%= f.text_area :comment %>
     </div>
+      <%#= f.hidden_field :choice_id %>
+      <%#= f.hidden_field :comment %>
       <%#= f.hidden_field :question_id %>
       <%#= f.hidden_field :user_id %>
       <%= f.submit %>
-    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <% @question.answers.each do |answer| %>
+    <p><%= answer.comment %></p>
+  <% end %>
 </div>
 
 
