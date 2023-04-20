@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
 
     resources :questions do
-      resource :answers, only: [:new, :create, :destroy]
+      resource :answers, only: [:new, :create, :update]
 
     end
     # post '/answers' => 'answers#create'
