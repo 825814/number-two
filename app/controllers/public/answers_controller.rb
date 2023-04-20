@@ -5,8 +5,8 @@ class Public::AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = Answer.new
 
-    @question_1 = Question.find(1)
-    @question_2 = Question.find(2)
+    # @question_1 = Question.find(1)
+    # @question_2 = Question.find(2)
   end
 
   def create

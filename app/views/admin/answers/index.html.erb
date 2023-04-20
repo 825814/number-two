@@ -4,7 +4,9 @@ admin answers index
 
 <% @choices.each do |choice| %>
 
+<%= link_to admin_show_path(@question, choice) do %>
 <%= choice.choice %>
+<% end %>
 
 
 

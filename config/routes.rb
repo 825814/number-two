@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :choices, only: [:new, :create, :index]
 
     get '/questions/:question_id' => "answers#index"
-    get '/questions/:question_id/choices/:choice_id/' => "answers#show"
+    get '/questions/:question_id/choices/:choice_id/' => "answers#show", as: 'show'
 
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
