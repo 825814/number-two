@@ -1,0 +1,22 @@
+<p>回答を編集するページ</p>
+
+<div>
+    <%= form_with(model: [@question, @answer], url: question_answers_path(question.id), method: :patch) do |f| %>
+    <p><%= @question.question %></p>
+    <div>
+      <%= f.label :choice_id, class: 'form_item_label' %>
+      <%- Choice.all.each do |choice| %>
+        <label><%= f.radio_button(:choice_id, choice.id) %><%#= choice.choice %></label>
+      <%- end %>
+    </div>
+    <div>
+      <%= f.label :comment, "理由" %><br>
+      <%= f.text_area :comment %>
+    </div>
+    <%= f.hidden_field :answer_id, value: @answer.id %>
+
+    <!--これはいるか-->
+    <%= f.hidden_field :question_id, value: @question.id %>
+    <%= f.submit '変更を保存' %>
+    <% end %>
+  </div>

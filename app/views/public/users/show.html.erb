@@ -1,0 +1,11 @@
+<p>ログインしているユーザーの回答を表示</p>
+
+<% @answers.each do |answer| %>
+
+<%= answer.question.question %>
+<%= answer.choice.choice %>
+<%= answer.comment %>
+
+<%= link_to "変更する", edit_question_answers_path(answer.question.id) %>
+
+<% end %>

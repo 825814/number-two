@@ -12,15 +12,15 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
 
-    post '/answers/confirm' => 'answers#confirm', as: 'confirm'
-    get '/answers/complete' => 'answers#complete', as: 'complete'
-
+    get '/users/my_page' => "users#show"
+    # post '/answers/confirm' => 'answers#confirm', as: 'confirm'
+    # get '/answers/complete' => 'answers#complete', as: 'complete'
 
     resources :questions do
-      resource :answers, only: [:new, :create, :update]
+      resource :answers, only: [:new, :create, :edit, :update]
 
     end
-    # post '/answers' => 'answers#create'
+
 
   end
 
