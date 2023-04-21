@@ -1,12 +1,14 @@
 <p>回答を編集するページ</p>
 
 <div>
-    <%= form_with(model: [@question, @answer], url: question_answers_path(question.id), method: :patch) do |f| %>
+
+    <%= form_with model: [@question, @answer], url: question_answers_path(@question), method: :patch do |f| %>
+    <%#= form_with model: [@question, @answer], url: question_answers_path(@question), method: :patch do |f| %>
     <p><%= @question.question %></p>
     <div>
       <%= f.label :choice_id, class: 'form_item_label' %>
       <%- Choice.all.each do |choice| %>
-        <label><%= f.radio_button(:choice_id, choice.id) %><%#= choice.choice %></label>
+        <label><%= f.radio_button(:choice_id, choice.id) %><%= choice.choice %></label>
       <%- end %>
     </div>
     <div>
