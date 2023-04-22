@@ -63,7 +63,7 @@ class Public::AnswersController < ApplicationController
 
   def edit
     @question = Question.find(params[:question_id])
-    @answer = Answer.find(params[:id])
+    @answer = Answers.find(params[:id])
   end
 
 private

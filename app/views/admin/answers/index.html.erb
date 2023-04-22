@@ -2,12 +2,19 @@ admin answers index
 
 <%= @question.question %>
 
-<% @choices.each do |choice| %>
+<%# @choices.each do |choice| %>
+
+<%#= link_to admin_show_path(@question, choice) do %>
+<%#= choice.choice %>
+<%# end %>
+
+<%# end %>
+<% @all_ranks.each.with_index(1) do |choice, i| %>
+<%# @answers.each do |answer| %>
 
 <%= link_to admin_show_path(@question, choice) do %>
-<%= choice.choice %>
+  <%= i %>位
+  <%= choice.choice %>
 <% end %>
-
-
 
 <% end %>

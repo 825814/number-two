@@ -1,13 +1,15 @@
-admin answers show
+admin answers show<br>
 
-<%= @question.question %>
+<%= @question.question %><br>
 
-<%= @choice.choice %>
+<%= @choice.choice %><br>
 
+<p><%= @answers.count %>票</p><br>
 
 <!--？-->
 <% @answers.each do |answer| %>
 
 <%= answer.comment %>
+
 
 <% end %>
