@@ -4,12 +4,14 @@ admin answers show<br>
 
 <%= @choice.choice %><br>
 
-<p><%= @answers.count %>票</p><br>
-
+<% @choices.each do |choice| %>
+<p><%= @answers.choice.count %>票</p><br>
+<% end %>
 <!--？-->
 <% @answers.each do |answer| %>
 
-<%= answer.comment %>
+<p><%= @choice.answers.count %>票</p><br>
+<%#= @choice.answer.comment %>
 
 
 <% end %>
