@@ -3,25 +3,15 @@ class Admin::AnswersController < ApplicationController
   def index
     @question = Question.find(params[:question_id])
     @questions = Question.all
-    # @rankings = {}
+    @all_ranks = Choice.find(Answer.group(:choice_id).order('count(choice_id) desc').pluck(:choice_id))
 
-    # choices = @questions.map(&:choices).flatten
+    @answers = Answer.all
+    # @all_ranks = Choice.where(question_id: @question.id).joins(:answers).group(:id).order('COUNT(answers.id) DESC')
 
+    # @all_ranks = Choice.where(id: Answer.where(choice_id: @question.choices).group(:choice_id).order('count(choice_id) desc').pluck(:choice_id))
 
-    # choices.each do |choice|
-    #   answers = choice.answers
-    #   sorted_answers = answers.sort_by { |answer| -answer.rank } # ランキング順にソートする
-    #   @rankings[choice.id] = sorted_answers
-
-
-    # end
-
-    @all_ranks = @question & Choice.find(Answer.group(:choice_id).order('count(choice_id) desc').pluck(:choice_id))
-    # @all_ranks = @question.choices.left_joins(:answers)
-    #                 .group(:id)
-    #                 .order('COUNT(answers.id) DESC')
-
-    # @all_ranks = Note.find(Like.group(:note_id).order('count(note_id) desc').limit(3).pluck(:note_id))
+    # @question = Question.find(params[:id])
+    @choices = @question.choices.order(answers_count: :desc)
   end
 
   def show

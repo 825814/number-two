@@ -1,37 +1,38 @@
 admin answers index
 
 <%= @question.question %>
-
-<%# @choices.each do |choice| %>
-  <%#= link_to admin_show_path(@question, choice) do %>
-    <%#= choice.choice %>
-  <%# end %>
-<%# end %>
-<%#= @questions.each do |question| %>
-
-<%# @question.choices.each do |choice| %>
-<%#= choice.choice %>
-<%#= choice.answers.count %>
-
-<%# end %>
-
-  <% @all_ranks.each.with_index(1) do |choice, i| %>
+<% @all_ranks.each.with_index(1) do |choice, i| %>
     <%= link_to admin_show_path(@question, choice) do %>
-    <%= i %>位
-    <%= choice.choice %>
-    
-
+      <%= i %>位
+      <%= choice.choice %>
     <% end %>
   <% end %>
+<%= @question.question %>
+<% @choices.each do |choice| %>
+<%= choice.choice %>
+<% end %>
 
+  <%# @all_ranks.each.with_index(1) do |choice, i| %>
+    <%#= link_to admin_show_path(@question, choice) do %>
+    <%#= i %>
+    <%#= choice.choice %>
+    <%# end %>
+  <%# end %>
 
+  <%# if @all_ranks.present? %>
+  <% @all_ranks.each.with_index(1) do |choice, i| %>
+    <%= link_to admin_show_path(@question, choice) do %>
+      <%= i %>位
+      <%= choice.choice %>
+    <% end %>
+  <% end %>
+<%# else %>
+  <!--<p>No choices found.</p>-->
+<%# end %>
 
-    <br>
-
-
-  <!--<%# @answers.each do |answer| %>-->
-  <!--  <%#= answer.choice.choice %>-->
-  <!--<%# end %>-->
+  <% @answers.each do |answer| %>
+    <%= answer.choice.choice %>
+  <% end %>
 
 
 
