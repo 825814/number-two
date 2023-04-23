@@ -9,23 +9,29 @@ admin answers index
 <%# end %>
 <%#= @questions.each do |question| %>
 
+<%# @question.choices.each do |choice| %>
+<%#= choice.choice %>
+<%#= choice.answers.count %>
 
-
+<%# end %>
 
   <% @all_ranks.each.with_index(1) do |choice, i| %>
-
-
     <%= link_to admin_show_path(@question, choice) do %>
     <%= i %>位
     <%= choice.choice %>
+    
+
     <% end %>
   <% end %>
+
+
+
     <br>
 
 
-  <% @answers.each do |answer| %>
-    <%= answer.choice.choice %>
-  <% end %>
+  <!--<%# @answers.each do |answer| %>-->
+  <!--  <%#= answer.choice.choice %>-->
+  <!--<%# end %>-->
 
 
 
