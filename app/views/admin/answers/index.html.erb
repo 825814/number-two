@@ -1,16 +1,18 @@
 admin answers index
 
 <%= @question.question %>
-<% @all_ranks.each.with_index(1) do |choice, i| %>
-    <%= link_to admin_show_path(@question, choice) do %>
-      <%= i %>位
-      <%= choice.choice %>
-    <% end %>
+
+<%# @choices.each do |choice| %>
+<%#= choice.choice %>
+<%# end %>
+
+<% @ranks.each.with_index(1) do |choice, i| %>
+  <%= link_to admin_show_path(@question, choice) do %>
+    <%= i %>位 <%= choice.choice %>
   <% end %>
-<%= @question.question %>
-<% @choices.each do |choice| %>
-<%= choice.choice %>
 <% end %>
+
+
 
   <%# @all_ranks.each.with_index(1) do |choice, i| %>
     <%#= link_to admin_show_path(@question, choice) do %>
@@ -20,7 +22,7 @@ admin answers index
   <%# end %>
 
   <%# if @all_ranks.present? %>
-  <% @all_ranks.each.with_index(1) do |choice, i| %>
+  <% @ranks.each.with_index(1) do |choice, i| %>
     <%= link_to admin_show_path(@question, choice) do %>
       <%= i %>位
       <%= choice.choice %>
@@ -30,10 +32,9 @@ admin answers index
   <!--<p>No choices found.</p>-->
 <%# end %>
 
-  <% @answers.each do |answer| %>
-    <%= answer.choice.choice %>
-  <% end %>
-
+  <%# @answers.each do |answer| %>
+    <%#= answer.choice.choice %>
+  <%# end %>
 
 
 

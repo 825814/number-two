@@ -1,18 +1,26 @@
 class Admin::AnswersController < ApplicationController
 
-  def index
-    @question = Question.find(params[:question_id])
-    @questions = Question.all
-    @all_ranks = Choice.find(Answer.group(:choice_id).order('count(choice_id) desc').pluck(:choice_id))
+  # def index
+    def index
+      @question = Question.find(params[:question_id])
+      @ranks = @question.choices.joins(:answers).group(:choice_id).order('count(choice_id) desc')
+    end
 
-    @answers = Answer.all
+    # @question = Question.find(params[:question_id])
+    # @questions = Question.all
+    # @all_ranks = Choice.find(Answer.group(:choice_id).order('count(choice_id) desc').pluck(:choice_id))
+
+
+    # @ranks = @question.choices.joins(:answers).group(:choice_id).order('count(choice_id) desc')
+
+
+    # @answers = Answer.all
+
+
     # @all_ranks = Choice.where(question_id: @question.id).joins(:answers).group(:id).order('COUNT(answers.id) DESC')
 
     # @all_ranks = Choice.where(id: Answer.where(choice_id: @question.choices).group(:choice_id).order('count(choice_id) desc').pluck(:choice_id))
-
-    # @question = Question.find(params[:id])
-    @choices = @question.choices.order(answers_count: :desc)
-  end
+  # end
 
   def show
     @question = Question.find(params[:question_id])
