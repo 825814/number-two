@@ -11,12 +11,15 @@ class Admin::AnswersController < ApplicationController
   def show
     @question = Question.find(params[:question_id])
     @choice = Choice.find(params[:choice_id])
-    
-    
+
+
     # ?他のanswerも全部表示されるAnswer.allだと
-    # @choices = @question.choices
-    # @answers = @choice.answers
+
+    @answers = @choice.answers
     @answers = @question.answers
+    # この２つをまとめる
+    
+# Student.where(gender: "女性").where("age > ?", 16)
     # && @answers =  @choice.answers
 
 

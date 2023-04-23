@@ -4,14 +4,19 @@ admin answers show<br>
 
 <%= @choice.choice %><br>
 
-<% @choices.each do |choice| %>
-<p><%= @answers.choice.count %>票</p><br>
+<% @question.answers.each do |answer| %>
+<%# @choice.answers.each do |answer| %>
+<%= answer.comment %>
 <% end %>
+<%# end %>
+
+<p><%= @answers.count %>票</p><br>
+
 <!--？-->
 <% @answers.each do |answer| %>
 
-<p><%= @choice.answers.count %>票</p><br>
-<%#= @choice.answer.comment %>
+<p><%#= answer.count %></p><br>
+<%= answer.comment %>
 
 
 <% end %>
