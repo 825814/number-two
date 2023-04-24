@@ -13,4 +13,24 @@ class Answer < ApplicationRecord
   #   choice.increment!(:answers_count)
   # end
 
+  # def self.ranking(question_id)
+  #   joins(:choice).where(question_id: question_id).group(:choice_id).order('count(*) DESC')
+  # end
+  # def self.ranking(question_id)
+  #   joins(:choice).where(question_id: question_id).group(:choice_id).order('COUNT(*) DESC')
+  # end
+  # def self.ranking(question_id)
+  #   joins(:choice).where(question_id: question_id).group(:choice_id).order('COUNT(*) desc')
+  # end
+  # def self.ranking(question_id)
+  #   joins(:choice).where(question_id: question_id).group(:choice_id).order('count(*) DESC')
+  # end
+  # def self.ranking(question_id)
+  #   joins(:choice).where(question_id: question_id).group(:choice_id).order('count(*) DESC')
+  # end
+  def self.ranking(question_id)
+    joins(:choice).where(question_id: question_id).group(:choice_id).order('count(*) DESC')
+  end
+
+
 end

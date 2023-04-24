@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :choices, only: [:new, :create, :index]
 
     get '/questions/:question_id' => "answers#index"
+    # get '/questions/:question_id/choices' => "answers#index", as: 'index'
     get '/questions/:question_id/choices/:choice_id/' => "answers#show", as: 'show'
 
   end
