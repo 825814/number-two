@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  
+  post 'guest_sign_in', to: 'public/sessions#new_guest'
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
@@ -11,6 +13,8 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
+
+   
 
     get '/users/my_page' => "users#show"
     # post '/answers/confirm' => 'answers#confirm', as: 'confirm'
