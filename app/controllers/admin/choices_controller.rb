@@ -5,7 +5,7 @@ class Admin::ChoicesController < ApplicationController
 
   def create
     @choice = Choice.new(choice_params)
-    if @choice.save
+    if @choice.save!
       flash[:notice] = "成功！"
       redirect_to "/admin/choices"
     else
@@ -13,14 +13,14 @@ class Admin::ChoicesController < ApplicationController
       render "new"
     end
   end
-  
+
   def index
     @choices = Choice.all
   end
 
   private
     def choice_params
-      params.require(:choice).permit(:choice)
+      params.require(:choice).permit(:choice, :question_id)
     end
 
 

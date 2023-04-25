@@ -2,9 +2,9 @@ admin answers index
 
 <%= @question.question %>
 
-<% @ranks.each.with_index(1) do |answer, i| %>
-  <%= i %>位 <%= answer.choice.choice %> <%= answer.choice.question_id %><br>
-<% end %>
+<%# @ranks.each.with_index(1) do |answer, i| %>
+  <%#= i %> <%#= answer.choice.choice %> <%#= answer.choice.question_id %><br>
+<%# end %>
 <%# @ranks.each.with_index(1) do |choice, i| %>
   <%#= link_to admin_show_path(@question, choice) do %>
     <%#= i %> <%#= choice.choice %>
@@ -14,9 +14,28 @@ admin answers index
 
 
 
+  <!--<%# @ranking.each_with_index do |answer, i| %>-->
+  <!--  <li>第<%#= i + 1 %>位-->
+  <!--  <%#= answer.choice.choice %></li>-->
+  <!--<%# end %>-->
+
+<%# if @ranking %>
+  <% @ranking.each_with_index do |answer, i| %>
+    <li>第<%= i + 1 %>位
+    <%= answer.choice.choice %></li>
+  <% end %>
+<%# else %>
+  <!--<p>ランキングはありません。</p>-->
+<%# end %>
+
+
+
+
+
+
 
   <%# if @all_ranks.present? %>
-  <%# @ranks.each.with_index(1) do |choice, i| %>
+  <%# @all_ranks.each.with_index(1) do |choice, i| %>
     <%#= link_to admin_show_path(@question, choice) do %>
       <%#= i %>
       <%#= choice.choice %>

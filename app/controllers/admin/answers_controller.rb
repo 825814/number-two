@@ -2,8 +2,7 @@ class Admin::AnswersController < ApplicationController
 
   def index
     @question = Question.find(params[:question_id])
-    @ranks = Answer.ranking(params[:question_id])
-
+    @ranking = Answer.ranking(params[:question_id])
   end
 
   # def index
