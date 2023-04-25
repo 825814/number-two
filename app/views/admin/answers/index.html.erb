@@ -11,39 +11,36 @@ admin answers index
   <%# end %>
 <%# end %>
 
-
-
-
   <!--<%# @ranking.each_with_index do |answer, i| %>-->
   <!--  <li>第<%#= i + 1 %>位-->
   <!--  <%#= answer.choice.choice %></li>-->
   <!--<%# end %>-->
 
 <%# if @ranking %>
-  <% @ranking.each_with_index do |answer, i| %>
-    <li>第<%= i + 1 %>位
-    <%= answer.choice.choice %></li>
-  <% end %>
+  <%# @ranking.each_with_index do |answer, i| %>
+    <!--<li>第<%#= i + 1 %>位-->
+    <%#= answer.choice.choice %>
+    <!--</li>-->
+  <%# end %>
 <%# else %>
   <!--<p>ランキングはありません。</p>-->
 <%# end %>
 
 
 
-
-
-
-
-  <%# if @all_ranks.present? %>
-  <%# @all_ranks.each.with_index(1) do |choice, i| %>
-    <%#= link_to admin_show_path(@question, choice) do %>
-      <%#= i %>
-      <%#= choice.choice %>
-    <%# end %>
-  <%# end %>
-<%# else %>
-  <!--<p>No choices found.</p>-->
-<%# end %>
+  <% if @all_ranks.present? %>
+  <% @all_ranks.each.with_index(1) do |choice, i| %>
+    <%= link_to admin_show_path(@question, choice) do %>
+      <%= i %>位
+      <%= choice.choice %>
+      <!--<%#= choice.answers.count %>票-->
+      <!--これだと質問に紐付いていない選択肢の票数が表示される-->
+      (<%= choice.answers.where(question_id: @question.id).count %>票)
+    <% end %>
+  <% end %>
+<% else %>
+  <p>No choices found.</p>
+<% end %>
 
   <%# @answers.each do |answer| %>
     <%#= answer.choice.choice %>
