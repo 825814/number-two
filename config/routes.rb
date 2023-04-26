@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :guest_users
+  # devise_for :guest_users
   # devise_for :guests
 
   devise_for :users, skip: [:passwords], controllers: {
@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
-# devise_scope :user do
-#   get '/guest_sign_in', to: 'public/sessions#new_guest'
-# end
 
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
 
   scope module: :public do
     root to: "homes#top"

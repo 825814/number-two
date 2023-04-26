@@ -32,8 +32,9 @@
       <%= link_to("ログイン", "/users/sign_in") %>
     </li>
     <li>
-      <%= link_to 'ゲストログイン', guest_user_session_path %>
+      <%#= link_to 'ゲストログイン', guest_user_session_path %>
       <%#= link_to("ゲストログイン", "/guests/sign_in") %>
+      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
     </li>
     <% end %>
   </ul>
