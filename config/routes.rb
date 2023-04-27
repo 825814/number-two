@@ -38,8 +38,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/admin' => "homes#top"
-    resources :questions, only: [:new, :create]
-    resources :choices, only: [:new, :create, :index]
+    resources :questions, only: [:new, :create, :edit, :update, :destroy]
+    resources :choices, only: [:new, :create, :index, :edit, :update, :destroy]
 
     get '/questions/:question_id' => "answers#index"
     # get '/questions/:question_id/choices' => "answers#index", as: 'index'

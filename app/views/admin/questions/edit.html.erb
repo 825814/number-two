@@ -1,0 +1,10 @@
+admin/questions/edit
+
+<%= form_with model: [:admin, @question], method: :patch do |f| %>
+
+<div>
+  <%= f.label :question, "質問" %>
+  <%= f.text_field :question %>
+</div>
+  <%= f.submit %>
+<% end %>
