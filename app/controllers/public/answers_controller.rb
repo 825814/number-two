@@ -55,7 +55,7 @@ class Public::AnswersController < ApplicationController
     # @answer.choice_id = params[:answer][:choice_id]
 
     if @answer.update!(answer_params)
-      redirect_to questions_path
+      redirect_to users_my_page_path
        flash[:notice] = "回答を変更しました。"
     else
        flash.now[:alert] = "失敗！"

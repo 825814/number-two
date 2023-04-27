@@ -9,16 +9,25 @@
     <li>
       <%= link_to("ログアウト", "/users/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %>
     </li>
-    <!--<li>-->
-    <!--  <%#= link_to new_question_answer_path(question.id) do %>-->
-    <!--  <p>回答する</p>-->
-    <!--  <%# end %>-->
-
-    <!--</li>-->
+    <li>
+      <%= link_to "質問一覧", questions_path %>
+    </li>
+    <li>
+      <%= link_to "回答履歴", users_my_page_path %>
+    </li>
 
     <% elsif admin_signed_in? %>
     <li>
       <%= link_to("質問作成", "/admin/questions/new") %>
+    </li>
+    <li>
+      <%= link_to "作成済質問", admin_admin_path %>
+    </li>
+    <li>
+      <%= link_to "選択肢作成", new_admin_choice_path %>
+    </li>
+    <li>
+      <%= link_to "作成済選択肢", admin_choices_path %>
     </li>
     <li>
       <%= link_to("ログアウト", "/admin/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %>
