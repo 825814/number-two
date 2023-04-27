@@ -47,7 +47,9 @@ class Public::AnswersController < ApplicationController
   # end
 
   def update
-    @answer = Answer.find(params[:id])
+    # @answer = @question.current_user.answers
+    @answer = current_user.answers.find_by(question_id: params[:question_id])
+
     # @answer.user_id = current_user.id
     # @answer.question_id = params[:answer][:question_id]
     # @answer.choice_id = params[:answer][:choice_id]
@@ -63,7 +65,8 @@ class Public::AnswersController < ApplicationController
 
   def edit
     @question = Question.find(params[:question_id])
-    @answer = Answers.find(params[:id])
+    # @answer = Answers.find(params[:id])
+    @answer = current_user.answers.find_by(question_id: params[:question_id])
   end
 
 private
