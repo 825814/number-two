@@ -55,4 +55,6 @@ class Admin::QuestionsController < ApplicationController
       end
     end
 
+    
+
 end

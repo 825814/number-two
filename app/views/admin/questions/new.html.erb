@@ -1,8 +1,13 @@
-<%= form_with model: [:admin, @question], method: :post do |f| %>
 
-<div>
-  <%= f.label :question, "質問" %>
-  <%= f.text_field :question %>
-</div>
-  <%= f.submit %>
+<% if current_user.admin? && !answered_question? %>
+
+  <%= form_with model: [:admin, @question], method: :post do |f| %>
+
+  <div>
+    <%= f.label :question, "質問" %>
+    <%= f.text_field :question %>
+  </div>
+    <%= f.submit %>
+  <% end %>
+
 <% end %>
