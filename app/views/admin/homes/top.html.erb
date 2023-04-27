@@ -10,6 +10,6 @@ admin
   <% end %>
 
   <%= link_to "変更する", edit_admin_question_path(question.id) %>
-
+  <%= link_to "削除する", admin_question_path(question.id), method: :delete %>
 <% end %>
 

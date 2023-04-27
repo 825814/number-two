@@ -1,0 +1,10 @@
+admin/choices/edit
+
+<%= form_with model: [:admin, @choice], method: :patch do |f| %>
+
+<div>
+  <%= f.label :choice, "選択肢" %>
+  <%= f.text_field :choice %>
+</div>
+  <%= f.submit %>
+<% end %>

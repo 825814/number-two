@@ -2,4 +2,7 @@
 
 <%= choice.choice %>
 
+<%= link_to "変更する", edit_admin_choice_path(choice.id) %>
+<%= link_to "削除する", admin_choice_path(choice.id), method: :delete %>
+
 <% end %>
