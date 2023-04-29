@@ -1,5 +1,5 @@
 
-<% if current_user.admin? && !answered_question? %>
+<%# if current_user.admin? && !answered_question? %>
 
   <%= form_with model: [:admin, @question], method: :post do |f| %>
 
@@ -10,4 +10,4 @@
     <%= f.submit %>
   <% end %>
 
-<% end %>
+<%# end %>

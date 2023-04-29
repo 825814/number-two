@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   # devise_for :guest_users
   # devise_for :guests
 
+  # get '/search_articles', to: 'articles#search'
+  # キーワード検索
+  get "search" => "searches#search"
+
+
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -38,6 +43,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/admin' => "homes#top"
+
     resources :questions, only: [:new, :create, :edit, :update, :destroy]
     resources :choices, only: [:new, :create, :index, :edit, :update, :destroy]
 
