@@ -18,8 +18,12 @@ admin answers show<br>
 <p><%#= answer.count %></p><br>
 <%= answer.comment %>
 
+  <% if answer.bookmarked_by_admin? %>
+    <%= link_to 'Remove Bookmark', remove_bookmark_path(answer.id), method: :patch %>
+  <% else %>
+    <%= link_to 'Bookmark', bookmark_path(answer.id), method: :patch %>
+  <% end %>
 
 <% end %>
 
 
-<%= link_to 'ブックマーク',  %>

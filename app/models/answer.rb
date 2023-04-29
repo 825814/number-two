@@ -4,16 +4,11 @@ class Answer < ApplicationRecord
   belongs_to :choice
 
 
-  # , counter_cache: true
-  # after_create :increment_choice_answers_count
 
   # private
-
   # def increment_choice_answers_count
   #   choice.increment!(:answers_count)
   # end
-
-
 
   # def self.ranking(question_id)
   #   joins(:choice).where(question_id: question_id).group('choices.id').order('count(*) DESC')
@@ -25,6 +20,11 @@ def self.ranking(question_id)
       .group('choices.id')
       .select('choices.*, COUNT(*) AS choice_count')
       .order('choice_count DESC')
+ends
+
+def bookmarked_by_admin?
+
+  bookmarked_by_admin?
 end
 
 # キーワード検索
