@@ -2,8 +2,8 @@ class Answer < ApplicationRecord
   belongs_to :user
   belongs_to :question
   belongs_to :choice
-  
 
+  has_many :favorites, dependent: :destroy
 
   # private
   # def increment_choice_answers_count
@@ -23,9 +23,7 @@ def self.ranking(question_id)
 end
 
 
-def bookmarked_by_admin?
-  admin_bookmarks.exists?(answer_id: id)
-end
+
 
 # キーワード検索
 def self.looks(search, word)

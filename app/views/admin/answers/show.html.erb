@@ -12,18 +12,24 @@ admin answers show<br>
 
 <p><%= @answers.count %>票</p><br>
 
+<p>お気に入りに登録したコメント</p>
+<% @comments.each do |comment| %>
+  <%= comment %>
+<% end %>
+
 <!--？-->
 <% @answers.each do |answer| %>
 
 <p><%#= answer.count %></p><br>
 <%= answer.comment %>
 
-  <% if answer.bookmarked_by_admin? %>
-    <%= link_to 'Remove Bookmark', remove_bookmark_admin_answer_path(answer.id), method: :patch %>
+<% if admin_signed_in? %>
+  <% if current_admin.favorites.exists?(answer_id: answer.id) %>
+    <%= link_to "お気に入り解除", admin_favorite_path(current_admin.favorites.find_by(answer_id: answer.id)), method: :delete, class: "btn btn-warning" %>
   <% else %>
-    <%= link_to 'Bookmark', bookmark_admin_answer_path(answer.id), method: :patch %>
+    <%= link_to "お気に入り登録", admin_favorites_path(answer_id: answer.id), method: :post, class: "btn btn-success" %>
   <% end %>
-
+<% end %>
 
 <% end %>
 
