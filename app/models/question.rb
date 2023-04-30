@@ -21,6 +21,11 @@ class Question < ApplicationRecord
       @question = Question.all
     end
   end
+  
+  # def index
+  #   @question = Question.where('question LIKE ?', "%#{params[:keyword]}%")
+  # end
+
 
 
 end

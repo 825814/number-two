@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # get '/search_articles', to: 'articles#search'
   # キーワード検索
-  get "search" => "searches#search"
+  # get "search" => "searches#search"
 
 
   devise_for :users, skip: [:passwords], controllers: {
@@ -43,11 +43,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/admin' => "homes#top"
-
-    resources :questions, only: [:new, :create, :edit, :update, :destroy]
+    # get "search" => "searches#search"
+    get "search" => "searches#index"
+    resources :questions, only: [:new, :create, :index, :edit, :update, :destroy]
     resources :choices, only: [:new, :create, :index, :edit, :update, :destroy]
     resources :favorites, only: [:create, :destroy]
-
+    resources :answers, only: [:index]
     get '/questions/:question_id' => "answers#index"
     # get '/questions/:question_id/choices' => "answers#index", as: 'index'
     get '/questions/:question_id/choices/:choice_id/' => "answers#show", as: 'show'

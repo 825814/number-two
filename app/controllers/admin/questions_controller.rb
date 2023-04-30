@@ -41,6 +41,10 @@ class Admin::QuestionsController < ApplicationController
       flash.now[:alert] = "失敗"
     end
   end
+  
+  def index
+    @questions = Question.where('question LIKE ?', "%#{params[:keyword].split.join('%')}%")
+  end
 
   private
     def question_params

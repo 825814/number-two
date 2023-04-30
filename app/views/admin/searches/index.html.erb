@@ -1,0 +1,34 @@
+<h1>検索結果</h1>
+<% if @questions.any? %>
+  <h2>質問</h2>
+  <ul>
+    <% @questions.each do |question| %>
+      <li><%= link_to question.question, admin_question_path(question) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @answers.any? %>
+  <h2>回答</h2>
+  <ul>
+    <% @answers.each do |answer| %>
+      <li><%= link_to answer.comment, admin_answer_path(answer) %></li>
+    <% end %>
+    <%# @answers.each do |answer| %>
+      <!--<li><%#= link_to answer.comment, admin_question_answer_path(answer.question, answer) %></li>-->
+    <%# end %>
+  </ul>
+<% end %>
+
+<% if @choices.any? %>
+  <h2>選択肢</h2>
+  <ul>
+    <% @choices.each do |choice| %>
+      <li><%= link_to choice.choice, admin_choice_path(choice) %></li>
+    <% end %>
+
+    <%# @choices.each do |choice| %>
+      <!--<li><%#= link_to choice.choice, admin_question_choice_path(choice.question, choice) %></li>-->
+    <%# end %>
+  </ul>
+<% end %>
