@@ -2,7 +2,7 @@ class Answer < ApplicationRecord
   belongs_to :user
   belongs_to :question
   belongs_to :choice
-
+  
 
 
   # private
@@ -20,11 +20,11 @@ def self.ranking(question_id)
       .group('choices.id')
       .select('choices.*, COUNT(*) AS choice_count')
       .order('choice_count DESC')
-ends
+end
+
 
 def bookmarked_by_admin?
-
-  bookmarked_by_admin?
+  admin_bookmarks.exists?(answer_id: id)
 end
 
 # キーワード検索

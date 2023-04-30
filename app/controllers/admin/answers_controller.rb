@@ -41,15 +41,15 @@ class Admin::AnswersController < ApplicationController
     # && @answers =  @choice.answers
   end
 
-  def bookmark
-    answer = Answer.find(params[:id])
-    answer.update(bookmarked_by_admin: true)
-    redirect_back(fallback_location: root_path)
-  end
+  # def bookmark
+  #   answer = Answer.find(params[:id])
+  #   answer.update(bookmarked_by_admin: true)
+  #   redirect_back(fallback_location: root_path)
+  # end
 
-  def remove_bookmark
-    answer = Answer.find(params[:id])
-    answer.update(bookmarked_by_admin: false)
-    redirect_back(fallback_location: root_path)
-  end
+  # def remove_bookmark
+  #   answer = Answer.find(params[:id])
+  #   answer.update(bookmarked_by_admin: false)
+  #   redirect_back(fallback_location: root_path)
+  # end
 end
