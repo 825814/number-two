@@ -41,9 +41,11 @@ class Admin::QuestionsController < ApplicationController
       flash.now[:alert] = "失敗"
     end
   end
-  
+
   def index
-    @questions = Question.where('question LIKE ?', "%#{params[:keyword].split.join('%')}%")
+    # @questions = Question.where('question LIKE ?', "%#{params[:keyword].split.join('%')}%")
+    # @answers = Answer.where('comment LIKE ?', "%#{params[:keyword].split.join('%')}%")
+    # @choices = Choice.where('choice LIKE ?', "%#{params[:keyword].split.join('%')}%")
   end
 
   private
@@ -59,6 +61,6 @@ class Admin::QuestionsController < ApplicationController
       end
     end
 
-    
+
 
 end

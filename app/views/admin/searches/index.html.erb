@@ -8,27 +8,34 @@
   </ul>
 <% end %>
 
+<!--<%# if @answers.any? %>-->
+<!--  <h2>回答</h2>-->
+<!--  <ul>-->
+<!--    <%# @answers.each do |answer| %>-->
+<!--      <li><%#= link_to answer.comment, admin_show_path(question_id: answer.question, choice_id: answer.choice) %></li>-->
+<!--    <%# end %>-->
+<!--  </ul>-->
+<!--<%# end %>-->
+
 <% if @answers.any? %>
   <h2>回答</h2>
   <ul>
     <% @answers.each do |answer| %>
-      <li><%= link_to answer.comment, admin_answer_path(answer) %></li>
+      <li><%= link_to answer.comment, admin_show_path(question_id: answer.question, choice_id: answer.choice, anchor: "search-result") %></li>
+      <!--指定したコメントがあるところにスクロールするようにしている。青字-->
     <% end %>
-    <%# @answers.each do |answer| %>
-      <!--<li><%#= link_to answer.comment, admin_question_answer_path(answer.question, answer) %></li>-->
-    <%# end %>
   </ul>
 <% end %>
 
-<% if @choices.any? %>
-  <h2>選択肢</h2>
-  <ul>
-    <% @choices.each do |choice| %>
-      <li><%= link_to choice.choice, admin_choice_path(choice) %></li>
-    <% end %>
 
-    <%# @choices.each do |choice| %>
-      <!--<li><%#= link_to choice.choice, admin_question_choice_path(choice.question, choice) %></li>-->
-    <%# end %>
-  </ul>
-<% end %>
+
+
+
+<!--<%# if @choices.any? %>-->
+<!--  <h2>選択肢</h2>-->
+<!--  <ul>-->
+<!--    <%# @choices.each do |choice| %>-->
+<!--      <li><%#= link_to choice.choice, admin_question_choice_path(choice.question_id, choice.id) %></li>-->
+<!--    <%# end %>-->
+<!--  </ul>-->
+<!--<%# end %>-->

@@ -18,6 +18,8 @@ admin answers show<br>
 <% end %>
 
 <!--？-->
+<!--<div id="search-result">は指定したアンカーの位置にスクロールされるように、にidを設定している（キーワード検索）-->
+<div id="search-result">
 <% @answers.each do |answer| %>
 
 <p><%#= answer.count %></p><br>
@@ -32,6 +34,7 @@ admin answers show<br>
 <% end %>
 
 <% end %>
+</div>
 
 
 
