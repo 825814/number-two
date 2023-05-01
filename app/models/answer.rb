@@ -26,18 +26,18 @@ end
 
 
 # キーワード検索
-def self.looks(search, word)
-  if search == "perfect_match"
-    @answer = Answer.where("name LIKE?", "#{word}")
-  elsif search == "forward_match"
-    @answer = Answer.where("name LIKE?","#{word}%")
-  elsif search == "backward_match"
-    @answer = Answer.where("name LIKE?","%#{word}")
-  elsif search == "partial_match"
-    @answer = Answer.where("name LIKE?","%#{word}%")
-  else
-    @answer = Answer.all
-  end
-end
+# def self.looks(search, word)
+#   if search == "perfect_match"
+#     @answer = Answer.where("name LIKE?", "#{word}")
+#   elsif search == "forward_match"
+#     @answer = Answer.where("name LIKE?","#{word}%")
+#   elsif search == "backward_match"
+#     @answer = Answer.where("name LIKE?","%#{word}")
+#   elsif search == "partial_match"
+#     @answer = Answer.where("name LIKE?","%#{word}%")
+#   else
+#     @answer = Answer.all
+#   end
+# end
 
 end

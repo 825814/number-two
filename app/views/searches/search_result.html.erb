@@ -1,33 +1,33 @@
 <!--キーワード検索-->
-<h2>Results index</h2>
+<!--<h2>Results index</h2>-->
 
-<table class="table table-hover table-inverse">
-  検索対象モデル 
-  <% if @range == "Question" %>
-    <tbody>
-      <% @questions.each do |question| %>
-        <tr>
-          <td><%= question.question %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% elsif %>
+<!--<table class="table table-hover table-inverse">-->
+<!--  検索対象モデル -->
+<!--  <%# if @range == "Question" %>-->
+<!--    <tbody>-->
+<!--      <%# @questions.each do |question| %>-->
+<!--        <tr>-->
+<!--          <td><%#= question.question %></td>-->
+<!--        </tr>-->
+<!--      <%# end %>-->
+<!--    </tbody>-->
+<!--  <%# elsif %>-->
     
-    <tbody>
-      <% @answers.each do |answer| %>
-        <tr>
-          <td><%= answer.comment %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% else %>
+<!--    <tbody>-->
+<!--      <%# @answers.each do |answer| %>-->
+<!--        <tr>-->
+<!--          <td><%#= answer.comment %></td>-->
+<!--        </tr>-->
+<!--      <%# end %>-->
+<!--    </tbody>-->
+<!--  <%# else %>-->
    
-    <tbody>
-      <% @choices.each do |choice| %>
-        <tr>
-          <td><%= choice.choice %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  <% end %>
-</table>
+<!--    <tbody>-->
+<!--      <%# @choices.each do |choice| %>-->
+<!--        <tr>-->
+<!--          <td><%#= choice.choice %></td>-->
+<!--        </tr>-->
+<!--      <%# end %>-->
+<!--    </tbody>-->
+<!--  <%# end %>-->
+<!--</table>-->
