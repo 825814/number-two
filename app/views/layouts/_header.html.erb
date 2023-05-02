@@ -1,58 +1,88 @@
 <header>
-  <div class="header-logo">
-    number two
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">number two</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto">
+
+
+
+          <% if user_signed_in? %>
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <%= link_to("/users/sign_out", method: :delete, class: "btn btn-outline-primary") do %>
+              ログアウト
+            <% end %>
+            <%= link_to questions_path, class: "btn btn-outline-primary" do %>
+              質問一覧
+            <% end %>
+            <%= link_to users_my_page_path, class: "btn btn-outline-primary" do %>
+              回答履歴
+            <% end %>
+          </div>
+
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <li class="nav-link">
+            <%= link_to("/users/sign_out", method: :delete) do %>
+            <!--, data: {confirm: "本当にログアウトしますか？"}-->
+            <button type="button" class="btn btn-outline-primary">ログアウト</button>
+            <% end %>
+          </li>
+          <li class="nav-link">
+            <%= link_to questions_path do %>
+            <button type="button" class="btn btn-outline-primary">質問一覧</button>
+            <% end %>
+          </li>
+          <li class="nav-link">
+            <%= link_to users_my_page_path do %>
+            <button type="button" class="btn btn-outline-primary">回答履歴</button>
+            <% end %>
+          </li>
+          </div>
+
+          <% elsif admin_signed_in? %>
+          <li class="nav-link">
+            <%= link_to("質問作成", "/admin/questions/new") %>
+          </li>
+          <li class="nav-link">
+            <%= link_to "作成済質問", admin_admin_path %>
+          </li>
+          <li class="nav-link">
+            <%= link_to "選択肢作成", new_admin_choice_path %>
+          </li>
+          <li class="nav-link">
+            <%= link_to "作成済選択肢", admin_choices_path %>
+          </li>
+          <li class="nav-link">
+            <%= link_to("ログアウト", "/admin/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %>
+          </li>
+
+          <%= render 'searches/search' %>
+
+
+
+          <% else %>
+          <li class="nav-link">
+            <%= link_to("新規登録", "/users/sign_up") %>
+          </li>
+          <li class="nav-link">
+            <%= link_to("ログイン", "/users/sign_in") %>
+          </li>
+          <li class="nav-link">
+            <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+          </li>
+          <li class="nav-link">
+            <%= link_to '管理者', new_admin_session_path %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
-
-
-  <ul>
-    <% if user_signed_in? %>
-    <li>
-      <%= link_to("ログアウト", "/users/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %>
-    </li>
-    <li>
-      <%= link_to "質問一覧", questions_path %>
-    </li>
-    <li>
-      <%= link_to "回答履歴", users_my_page_path %>
-    </li>
-
-    <% elsif admin_signed_in? %>
-    <li>
-      <%= link_to("質問作成", "/admin/questions/new") %>
-    </li>
-    <li>
-      <%= link_to "作成済質問", admin_admin_path %>
-    </li>
-    <li>
-      <%= link_to "選択肢作成", new_admin_choice_path %>
-    </li>
-    <li>
-      <%= link_to "作成済選択肢", admin_choices_path %>
-    </li>
-    <li>
-      <%= link_to("ログアウト", "/admin/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %>
-    </li>
-
-    <%= render 'searches/search' %>
-
-
-
-    <% else %>
-    <li>
-      <%= link_to("新規登録", "/users/sign_up") %>
-    </li>
-    <li>
-      <%= link_to("ログイン", "/users/sign_in") %>
-    </li>
-    <li>
-      <%#= link_to 'ゲストログイン', guest_user_session_path %>
-      <%#= link_to("ゲストログイン", "/guests/sign_in") %>
-      <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
-    </li>
-    <li>
-      <%= link_to '管理者', new_admin_session_path %>
-    </li>
-    <% end %>
-  </ul>
+  </nav>
 </header>
 
