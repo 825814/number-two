@@ -1,10 +1,17 @@
-admin/choices/edit
+<p id="notice"></p>
+<div class="container">
 
-<%= form_with model: [:admin, @choice], method: :patch do |f| %>
+  <%= form_with model: [:admin, @choice], method: :patch do |f| %>
 
-<div>
-  <%= f.label :choice, "選択肢" %>
-  <%= f.text_field :choice %>
+  <div class="row">
+    <%= f.label :choice, "選択肢", class: "col-md-1 col-form-label" %>
+    <div class="col-md-6">
+    <%= f.text_field :choice, class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+    <%= f.submit "変更", class: "btn btn-success" %>
+    </div>
+  </div>
+  <% end %>
+
 </div>
-  <%= f.submit %>
-<% end %>

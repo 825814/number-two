@@ -1,8 +1,18 @@
-<%= form_with model: [:admin, @choice], method: :post do |f| %>
+<p id="notice"></p>
+<div class="container">
 
-<div>
-  <%= f.label :choice, "選択肢" %>
-  <%= f.text_field :choice %>
+  <%= form_with model: [:admin, @choice], method: :post do |f| %>
+
+  <div class="row">
+    <%= f.label :choice, "選択肢", class: "col-md-1 col-form-label" %>
+    <div class="col-md-6">
+    <%= f.text_field :choice, placeholder: "ここに作成する選択肢を入力してください", class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+    <%= f.submit "登録", class: "btn btn-success" %>
+    </div>
+  </div>
+  <% end %>
+
+
 </div>
-  <%= f.submit %>
-<% end %>

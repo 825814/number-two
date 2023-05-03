@@ -1,13 +1,21 @@
+<p id="notice"></p>
+<div class="container">
 
 <%# if current_user.admin? && !answered_question? %>
 
   <%= form_with model: [:admin, @question], method: :post do |f| %>
 
-  <div>
-    <%= f.label :question, "質問" %>
-    <%= f.text_field :question %>
+  <div class="row">
+    <%= f.label :question, "Q.", class: "col-md-1 col-form-label" %>
+    <div class="col-md-6">
+    <%= f.text_field :question, placeholder: "ここに作成する質問を入力してください", class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+    <%= f.submit "登録", class: "btn btn-success" %>
+    </div>
   </div>
-    <%= f.submit %>
   <% end %>
+  
 
 <%# end %>
+</div>
