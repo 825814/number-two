@@ -44,7 +44,6 @@ class Admin::AnswersController < ApplicationController
     # && @answers =  @choice.answers
   end
 
-
-
+  # 
 
 end

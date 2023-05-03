@@ -1,45 +1,47 @@
 <p id="notice"></p>
 <div class="container">
 
-<div class="row">
+  <div class="row">
     <h5 class="col-md-6"><strong><%= @question.question %></strong>><%= @choice.choice %>(<%= @answers.count %>票)</h5>
-</div>
+  </div>
 
-<div class="row">
-  <div class="col-md-6">
-  <!--<div id="search-result">は指定したアンカーの位置にスクロールされるように、にidを設定している（キーワード検索）-->
-  <div id="search-result">
-  <% @answers.each do |answer| %>
+  <div class="row">
+    <div class="col-md-6">
+    <!--<div id="search-result">は指定したアンカーの位置にスクロールされるように、にidを設定している（キーワード検索）-->
+      <div id="search-result">
+        <table class="table">
+        <% @answers.each do |answer| %>
+        <tr>
+          <!--<p><%#= answer.count %></p><br>-->
+          <td><%= answer.comment %></td>
+          <td>
+          <% if admin_signed_in? %>
+            <% if current_admin.favorites.exists?(answer_id: answer.id) %>
+              <%= link_to "お気に入り解除", admin_favorite_path(current_admin.favorites.find_by(answer_id: answer.id)), method: :delete, class: "btn btn-info btn-sm" %>
+            <% else %>
+              <%= link_to "お気に入り登録", admin_favorites_path(answer_id: answer.id), method: :post, class: "btn btn-success btn-sm" %>
+            <% end %>
+          <% end %>
+          </td>
+        </tr>
+        <% end %>
+        </table>
+      </div>
+    </div>
 
-    <p><%#= answer.count %></p><br>
-    <%= answer.comment %>
+    <div class="col-md-6">
+      <h6>お気に入りのコメント</h6>
 
-    <% if admin_signed_in? %>
-      <% if current_admin.favorites.exists?(answer_id: answer.id) %>
-        <%= link_to "お気に入り解除", admin_favorite_path(current_admin.favorites.find_by(answer_id: answer.id)), method: :delete, class: "btn btn-warning" %>
-      <% else %>
-        <%= link_to "お気に入り登録", admin_favorites_path(answer_id: answer.id), method: :post, class: "btn btn-success" %>
+      <table class="table">
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment %></td>
+        </tr>
       <% end %>
-    <% end %>
+      </table>
+    </div>
 
-  <% end %>
   </div>
-  </div>
-
-  <div class="col-md-6">
-  <h6>お気に入りのコメント</h6>
-
-  <table class="table">
-  <% @comments.each do |comment| %>
-    <tr>
-      <td><%= comment %></td>
-    </tr>
-  <% end %>
-
-  </table>
-  </div>
-</div>
-
 </div>
 
 

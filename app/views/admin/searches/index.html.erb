@@ -1,33 +1,41 @@
-<h1>検索結果</h1>
-<% if @questions.any? %>
-  <h2>質問</h2>
-  <ul>
-    <% @questions.each do |question| %>
-      <li><%= link_to question.question, admin_question_path(question) %></li>
-    <% end %>
-  </ul>
-<% end %>
+<p id="notice"></p>
+<div class="container">
 
-<!--<%# if @answers.any? %>-->
-<!--  <h2>回答</h2>-->
-<!--  <ul>-->
-<!--    <%# @answers.each do |answer| %>-->
-<!--      <li><%#= link_to answer.comment, admin_show_path(question_id: answer.question, choice_id: answer.choice) %></li>-->
-<!--    <%# end %>-->
-<!--  </ul>-->
-<!--<%# end %>-->
+  <div class="row">
+    <div class="col-md-12">
 
-<% if @answers.any? %>
-  <h2>回答</h2>
-  <ul>
-    <% @answers.each do |answer| %>
-      <li><%= link_to answer.comment, admin_show_path(question_id: answer.question, choice_id: answer.choice, anchor: "search-result") %></li>
-      <!--指定したコメントがあるところにスクロールするようにしている。青字-->
-    <% end %>
-  </ul>
-<% end %>
+        <h1>検索結果</h1>
+        <% if @questions.any? %>
+          <h2>質問</h2>
+
+          <table class="table">
+          <% @questions.each do |question| %>
+          <tr>
+            <td><%= link_to question.question, admin_question_path(question) %></td>
+          </tr>
+          <% end %>
+          </table>
+
+        <% end %>
 
 
+
+        <% if @answers.any? %>
+          <h2>回答</h2>
+
+          <table class="table">
+          <% @answers.each do |answer| %>
+          <tr>
+          <td><%= link_to answer.comment, admin_show_path(question_id: answer.question, choice_id: answer.choice, anchor: "search-result") %></td>
+          <!--指定したコメントがあるところにスクロールするようにしている。青字-->
+          </tr>
+          <% end %>
+          </table>
+
+        <% end %>
+    </div>
+  </div>
+</div>
 
 
 

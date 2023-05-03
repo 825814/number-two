@@ -19,7 +19,8 @@ class Admin::FavoritesController < ApplicationController
     favorite = current_admin.favorites.find_by(id: params[:id])
     if favorite
       favorite.destroy
-      redirect_to admin_admin_path, notice: "お気に入りを解除しました。"
+      redirect_back fallback_location: root_path, notice: "お気に入りを解除しました。"
+      # redirect_to admin_admin_path, notice: "お気に入りを解除しました。"
     else
       redirect_to admin_admin_path, alert: "お気に入りが見つかりませんでした。"
     end
