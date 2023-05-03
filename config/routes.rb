@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     resources :questions, only: [:new, :create, :index, :edit, :update, :destroy]
     resources :choices, only: [:new, :create, :index, :edit, :update, :destroy]
     resources :favorites, only: [:create, :destroy]
-    resources :answers, only: [:index]
+    # resources :answers, only: [:index]
     get '/questions/:question_id' => "answers#index"
     # get '/questions/:question_id/choices' => "answers#index", as: 'index'
     get '/questions/:question_id/choices/:choice_id/' => "answers#show", as: 'show'

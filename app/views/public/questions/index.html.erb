@@ -1,9 +1,21 @@
-public questions index
+<p id="notice"></p>
+<div class="container">
 
-<% @questions.each do |question| %>
+  <div class="row">
+    <div class="col-md-12">
 
-<%= link_to new_question_answers_path(question.id) do %>
-  <%= question.question %>
-<% end %>
+      <table class="table">
+      <% @questions.each do |question| %>
+      <tr>
+      <td>
+      <%= link_to new_question_answers_path(question.id) do %>
+        Q.<%= question.question %>
+      <% end %>
+      </td>
+      </tr>
+      <% end %>
+      </table>
 
-<% end %>
+    </div>
+  </div>
+</div>
