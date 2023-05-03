@@ -1,15 +1,19 @@
-<p>topページ
-admin
-質問の作成に成功したらこのページに遷移する
-</p>
+<p id="notice"></p>
+<div class="container">
 
-<% @questions.each do |question| %>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
 
-  <%= link_to admin_path(question.id) do %>
-    <%= question.question %>
-  <% end %>
-
-  <%= link_to "変更する", edit_admin_question_path(question.id) %>
-  <%= link_to "削除する", admin_question_path(question.id), method: :delete %>
-<% end %>
+        <% @questions.each do |question| %>
+        <tr>
+          <td>
+          <%= link_to admin_path(question.id) do %>
+            <%= question.question %>
+          <% end %>
+          </td>
+          <td><%= link_to "変更する", edit_admin_question_path(question.id) %></td>
+          <td><%= link_to "削除する", admin_question_path(question.id), method: :delete %></td>
+        </tr>
+        <% end %>
 

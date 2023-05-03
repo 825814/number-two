@@ -1,39 +1,45 @@
-admin answers show<br>
+<p id="notice"></p>
+<div class="container">
 
-<%= @question.question %><br>
+<div class="row">
+    <h5 class="col-md-6"><strong><%= @question.question %></strong>><%= @choice.choice %>(<%= @answers.count %>票)</h5>
+</div>
 
-<%= @choice.choice %><br>
+<div class="row">
+  <div class="col-md-6">
+  <!--<div id="search-result">は指定したアンカーの位置にスクロールされるように、にidを設定している（キーワード検索）-->
+  <div id="search-result">
+  <% @answers.each do |answer| %>
 
-<%# @question.answers.each do |answer| %>
-<%# @choice.answers.each do |answer| %>
-<%#= answer.comment %>
-<%# end %>
-<%# end %>
+    <p><%#= answer.count %></p><br>
+    <%= answer.comment %>
 
-<p><%= @answers.count %>票</p><br>
+    <% if admin_signed_in? %>
+      <% if current_admin.favorites.exists?(answer_id: answer.id) %>
+        <%= link_to "お気に入り解除", admin_favorite_path(current_admin.favorites.find_by(answer_id: answer.id)), method: :delete, class: "btn btn-warning" %>
+      <% else %>
+        <%= link_to "お気に入り登録", admin_favorites_path(answer_id: answer.id), method: :post, class: "btn btn-success" %>
+      <% end %>
+    <% end %>
 
-<p>お気に入りに登録したコメント</p>
-<% @comments.each do |comment| %>
-  <%= comment %>
-<% end %>
-
-<!--？-->
-<!--<div id="search-result">は指定したアンカーの位置にスクロールされるように、にidを設定している（キーワード検索）-->
-<div id="search-result">
-<% @answers.each do |answer| %>
-
-<p><%#= answer.count %></p><br>
-<%= answer.comment %>
-
-<% if admin_signed_in? %>
-  <% if current_admin.favorites.exists?(answer_id: answer.id) %>
-    <%= link_to "お気に入り解除", admin_favorite_path(current_admin.favorites.find_by(answer_id: answer.id)), method: :delete, class: "btn btn-warning" %>
-  <% else %>
-    <%= link_to "お気に入り登録", admin_favorites_path(answer_id: answer.id), method: :post, class: "btn btn-success" %>
   <% end %>
-<% end %>
+  </div>
+  </div>
 
-<% end %>
+  <div class="col-md-6">
+  <h6>お気に入りのコメント</h6>
+
+  <table class="table">
+  <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment %></td>
+    </tr>
+  <% end %>
+
+  </table>
+  </div>
+</div>
+
 </div>
 
 

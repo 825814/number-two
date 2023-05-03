@@ -1,8 +1,20 @@
-<% @choices.each do |choice| %>
+<p id="notice"></p>
+<div class="container">
 
-<%= choice.choice %>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
 
-<%= link_to "変更する", edit_admin_choice_path(choice.id) %>
-<%= link_to "削除する", admin_choice_path(choice.id), method: :delete %>
+        <% @choices.each do |choice| %>
+        <tr>
+          <td><%= choice.choice %></td>
+  
+          <td><%= link_to "変更する", edit_admin_choice_path(choice.id) %></td>
+          <td><%= link_to "削除する", admin_choice_path(choice.id), method: :delete %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
 
-<% end %>
+</div>

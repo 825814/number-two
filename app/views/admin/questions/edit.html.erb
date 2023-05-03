@@ -4,7 +4,7 @@
   <%= form_with model: [:admin, @question], method: :patch do |f| %>
 
   <div class="row">
-    <%= f.label :question, "質問", class: "col-md-1 col-form-label" %>
+    <%= f.label :question, "Q.", class: "col-md-1 col-form-label" %>
     <div class="col-md-6">
     <%= f.text_field :question, class: "form-control" %>
     </div>

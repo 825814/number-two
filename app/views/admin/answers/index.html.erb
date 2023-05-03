@@ -1,50 +1,39 @@
-admin answers index
+<p id="notice"></p>
+<div class="container">
 
-<%= @question.question %>
+  <div class="row">
+  <h5><%= @question.question %></h5>
+  </div>
 
-<%# @ranks.each.with_index(1) do |answer, i| %>
-  <%#= i %> <%#= answer.choice.choice %> <%#= answer.choice.question_id %><br>
-<%# end %>
-<%# @ranks.each.with_index(1) do |choice, i| %>
-  <%#= link_to admin_show_path(@question, choice) do %>
-    <%#= i %> <%#= choice.choice %>
-  <%# end %>
-<%# end %>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
 
-  <!--<%# @ranking.each_with_index do |answer, i| %>-->
-  <!--  <li>第<%#= i + 1 %>位-->
-  <!--  <%#= answer.choice.choice %></li>-->
-  <!--<%# end %>-->
+      <% if @all_ranks.present? %>
+        <% @all_ranks.each.with_index(1) do |choice, i| %>
+        <tr>
+          <td><%= i %>位</td>
+          <td><%= choice.choice %></td>
+          <td>
+            <%= link_to admin_show_path(@question, choice) do %>
+            (<%= choice.answers.where(question_id: @question.id).count %>票)</td>
+            <!--<%#= choice.answers.count %>票-->
+            <!--これだと質問に紐付いていない選択肢の票数が表示される-->
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      <% else %>
+        <p>No choices found.</p>
+      <% end %>
+      
+      </table>
+    </div>
+  </div>
 
-<%# if @ranking %>
-  <%# @ranking.each_with_index do |answer, i| %>
-    <!--<li>第<%#= i + 1 %>位-->
-    <%#= answer.choice.choice %>
-    <!--</li>-->
-  <%# end %>
-<%# else %>
-  <!--<p>ランキングはありません。</p>-->
-<%# end %>
+</div>
 
 
-
-  <% if @all_ranks.present? %>
-  <% @all_ranks.each.with_index(1) do |choice, i| %>
-    <%= link_to admin_show_path(@question, choice) do %>
-      <%= i %>位
-      <%= choice.choice %>
-      <!--<%#= choice.answers.count %>票-->
-      <!--これだと質問に紐付いていない選択肢の票数が表示される-->
-      (<%= choice.answers.where(question_id: @question.id).count %>票)
-    <% end %>
-  <% end %>
-<% else %>
-  <p>No choices found.</p>
-<% end %>
-
-  <%# @answers.each do |answer| %>
-    <%#= answer.choice.choice %>
-  <%# end %>
 
 
 

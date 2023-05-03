@@ -36,7 +36,8 @@ class Admin::AnswersController < ApplicationController
     # @answers = @question.answers
     @answers = @question.answers & @choice.answers
     # この２つをまとめる
-  
+
+
     @favorite_comments = current_admin.favorites.map{ |f| f.answer.comment }.compact
     @comments = @answers.map(&:comment) & @favorite_comments
 # Student.where(gender: "女性").where("age > ?", 16)
