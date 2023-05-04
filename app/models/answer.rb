@@ -23,6 +23,9 @@ def self.ranking(question_id)
 end
 
 
+  # validates :choice_id, presence: true
+  validates :comment, presence: true
+  # validates :comment, presence: true, if: -> { choice.nil? }
 
 
 # キーワード検索

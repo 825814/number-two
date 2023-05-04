@@ -11,23 +11,44 @@ class Public::AnswersController < ApplicationController
   end
 
   def create
-    # @question = Question.find(params[:question_id])
-    # @answer = current_user.answers.new(answer_params)
+    @question = Question.find(params[:question_id])
     @answer = Answer.new(answer_params)
-    @answer.user_id = current_user.id
+    @answer.user = current_user
 
-    @answer.question_id = params[:answer][:question_id]
-    @answer.choice_id = params[:answer][:choice_id]
+    # if params[:answer][:choice].blank?
+    #   flash.now[:alert] = "選択肢を選択してください。"
+    #   render :new and return
+    # end
 
-    if @answer.save!
-      flash[:notice] = "成功！"
-      # redirect_to complete_path
-       redirect_to questions_path
+    if @answer.save
+      redirect_to questions_path, notice: '回答を投稿しました。'
     else
-      flash.now[:alert] = "失敗！"
-      render "new"
+      render :new
     end
   end
+# 　選択肢が選択されていなかったり、理由が入力されていなかった場合にエラーメッセージが表示される
+
+  # def create
+  #   @question = Question.find(params[:question_id])
+  #   @answer = @question.answers.new(answer_params)
+
+        # @answer = current_user.answers.new(answer_params)
+        #さっきまでこれだった @answer = Answer.new(answer_params)
+
+  #   @answer.user_id = current_user.id
+
+  #   @answer.question_id = params[:answer][:question_id]
+  #   @answer.choice_id = params[:answer][:choice_id]
+
+  #   if @answer.save!
+  #     flash[:notice] = "回答を投稿しました"
+  #     redirect_to questions_path
+  #   else
+  #     flash.now[:alert] = @answer.errors.full_messages.join(', ')
+  #     render "new"
+  #   end
+  # end
+
 
   # def confirm
   #   ## @answers = current_user.answers
