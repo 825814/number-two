@@ -1,74 +1,47 @@
-
-
-<div>
-  <% if @question.answered_by?(current_user) %>
-
-  <p>すでに回答済みです。
-  <!--入力を続行すると回答が更新されます-->
-  </p>
-  <!--<div>-->
-  <!--  <%#= form_with(model: [@question, @answer]) do |f| %>-->
-  <!--  <p><%#= @question.question %></p>-->
-  <!--  <div>-->
-  <!--    <%#= f.label :choice_id, class: 'form_item_label' %>-->
-  <!--    <%#- Choice.all.each do |choice| %>-->
-  <!--      <label><%#= f.radio_button(:choice_id, choice.id) %><%#= choice.choice %></label>-->
-  <!--    <%#- end %>-->
-  <!--  </div>-->
-  <!--  <div>-->
-  <!--    <%#= f.label :comment, "理由" %><br>-->
-  <!--    <%#= f.text_area :comment %>-->
-  <!--  </div>-->
-    <%#= f.hidden_field :answer_id, value: @answer.id %>
-
-    <!--これはいるか-->
-  <!--  <%#= f.hidden_field :question_id, value: @question.id %>-->
-  <!--  <%#= f.submit '変更を保存' %>-->
-  <!--  <%# end %>-->
-  <!--</div>-->
-
-  <% else %>
-  <%= form_with(model: [@question, @answer], url: question_answers_path(@question), method: :post) do |f| %>
-  <%#= form_with(model: [@question, @answer], url: confirm_path, method: :post) do |f| %>
+<p id="notice"></p>
+<div class="container">
 
   <div>
-    <p><%= @question.question %></p>
-    <div>
-      <%= f.label :choice_id, class: 'form_item_label' %>
-      <%- Choice.all.each do |choice| %>
-        <label><%= f.radio_button(:choice_id, choice.id) %><%= choice.choice %></label>
-      <%- end %>
+    <% if @question.answered_by?(current_user) %>
+    <h3>すでに回答済みです。</h3>
+
+    <% else %>
+    <%= form_with(model: [@question, @answer], url: question_answers_path(@question), method: :post) do |f| %>
+
+    <div class="row mb-5">
+      <h2><%= @question.question %></h2>
     </div>
-    <div>
-      <%= f.label :comment, "理由" %><br>
-      <%= f.text_area :comment %>
+
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label :choice_id, :選択肢の中から１つを選択してください。, class: 'form_item_label' %>
+
+        <table class="table table-borderless">
+        <%- Choice.all.each do |choice| %>
+        <tr>
+          <td>
+          <label><%= f.radio_button(:choice_id, choice.id) %><%= choice.choice %></label>
+          </td>
+        </tr>
+        <%- end %>
+        </table>
+      </div>
+
+      <div class="col-md-6">
+        <%= f.label :comment, "〜理由〜" %><br>
+        <%= f.text_area :comment, placeholder: "理由を入力してください（必須）。", class: "form-control" %>
+      </div>
     </div>
+
+        <!--これはいるか-->
+        <%= f.hidden_field :question_id, value: @question.id %>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <%= f.submit '回答', class: "btn btn-primary" %>
+          </div>
+        </div>
+
+    <% end %>
+    <% end %>
   </div>
-
-      <%#= f.hidden_field :choice_id, value: @choice.id %>
-      <%#= f.hidden_field :answer_id, value: @answer.id %>
-
-      <!--これはいるか-->
-      <%= f.hidden_field :question_id, value: @question.id %>
-      <%= f.submit '新規登録' %>
-
-  <% end %>
-  <% end %>
 </div>
-
-<%#= @answer.choice.choice %>
-<%#= @answer.comment %>
-
-
-
-<!--<div>-->
-<!--  <a href="new_2.html.erb">次へ</a>-->
-<!--</div>-->
-
-<!--<div>-->
-<!--  <%# @question.answers.each do |answer| %>-->
-<!--    <p><%#= answer.comment %></p>-->
-<!--  <%# end %>-->
-<!--</div>-->
-
-
