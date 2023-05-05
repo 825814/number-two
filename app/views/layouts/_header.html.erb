@@ -10,22 +10,8 @@
       <div class="navbar-nav ml-auto">
         <ul class="navbar-nav ml-auto">
 
-
-
           <% if user_signed_in? %>
-          <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <%= link_to("/users/sign_out", method: :delete, class: "btn btn-outline-primary") do %>
-              ログアウト
-            <% end %>
-            <%= link_to questions_path, class: "btn btn-outline-primary" do %>
-              質問一覧
-            <% end %>
-            <%= link_to users_my_page_path, class: "btn btn-outline-primary" do %>
-              回答履歴
-            <% end %>
-          </div>
 
-          <div class="btn-group" role="group" aria-label="Basic outlined example">
           <li class="nav-link">
             <%= link_to("/users/sign_out", method: :delete) do %>
             <!--, data: {confirm: "本当にログアウトしますか？"}-->
@@ -46,19 +32,29 @@
 
           <% elsif admin_signed_in? %>
           <li class="nav-link">
-            <%= link_to("質問作成", "/admin/questions/new") %>
+            <%= link_to "/admin/questions/new" do %>
+            <button type="button" class="btn btn-outline-primary">質問作成</button>
+            <% end %>
           </li>
           <li class="nav-link">
-            <%= link_to "作成済質問", admin_admin_path %>
+            <%= link_to admin_admin_path do %>
+            <button type="button" class="btn btn-outline-primary">作成済質問</button>
+            <% end %>
           </li>
           <li class="nav-link">
-            <%= link_to "選択肢作成", new_admin_choice_path %>
+            <%= link_to new_admin_choice_path do %>
+            <button type="button" class="btn btn-outline-primary">選択肢作成</button>
+            <% end %>
           </li>
           <li class="nav-link">
-            <%= link_to "作成済選択肢", admin_choices_path %>
+            <%= link_to admin_choices_path do %>
+            <button type="button" class="btn btn-outline-primary">作成済選択肢</button>
+            <% end %>
           </li>
           <li class="nav-link">
-            <%= link_to("ログアウト", "/admin/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %>
+            <%= link_to "/admin/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"} do %>
+            <button type="button" class="btn btn-outline-primary">ログアウト</button>
+            <% end %>
           </li>
 
           <%= render 'searches/search' %>
@@ -67,16 +63,24 @@
 
           <% else %>
           <li class="nav-link">
-            <%= link_to("新規登録", "/users/sign_up") %>
+            <%= link_to "/users/sign_up" do %>
+            <button type="button" class="btn btn-outline-primary">新規登録</button>
+            <% end %>
           </li>
           <li class="nav-link">
-            <%= link_to("ログイン", "/users/sign_in") %>
+            <%= link_to "/users/sign_in" do %>
+            <button type="button" class="btn btn-outline-primary">ログイン</button>
+            <% end %>
           </li>
           <li class="nav-link">
-            <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+            <%= link_to users_guest_sign_in_path, method: :post do %>
+            <button type="button" class="btn btn-outline-primary">ゲストログイン</button>
+            <% end %>
           </li>
           <li class="nav-link">
-            <%= link_to '管理者', new_admin_session_path %>
+            <%= link_to new_admin_session_path do %>
+            <button type="button" class="btn btn-outline-primary">管理者（仮表示）</button>
+            <% end %>
           </li>
           <% end %>
         </ul>

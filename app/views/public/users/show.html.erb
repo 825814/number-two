@@ -4,7 +4,13 @@
   <div class="row">
     <div class="col-md-12">
 
-      <h2><%= current_user.name %>さんの回答履歴</h2>
+      <h2>
+      <% if current_user && current_user.name %>
+        <%= current_user.name %>さんの回答履歴
+      <% else %>
+        ゲストさんの回答履歴
+      <% end %>
+      </h2>
 
       <table class="table">
         <thead class="thead-light">
