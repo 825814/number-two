@@ -1,8 +1,21 @@
+
 <p id="notice"></p>
 <div class="container">
 
   <div>
+    <% if @answer.errors.any? %>
+        <div class="alert alert-danger">
+          <h4><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h4>
+          <ul>
+            <% @answer.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
     <%= form_with model: [@question, @answer], url: question_answers_path(@question), method: :patch do |f| %>
+
+
 
   <div class="row mb-5">
     <h2><%= @question.question %>（回答の編集）</h2>

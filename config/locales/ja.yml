@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    attributes:
+      answer:
+        choice: '選択肢'
+        comment: 'コメント(理由）'
+    errors:
+      messages:
+        save_error: "回答を保存できませんでした。%{count}つのエラーがあります。"
+      models:
+        answer:
+          attributes:
+            choice:
+              blank: 'を選択してください'
+            comment:
+              blank: 'を入力してください'
+
+
+
