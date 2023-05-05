@@ -5,7 +5,9 @@ ja:
         choice: '選択肢'
         comment: 'コメント(理由）'
     errors:
+      format: "%{attribute} %{message}"
       messages:
+        blank: 'を入力してください'
         save_error: "回答を保存できませんでした。%{count}つのエラーがあります。"
       models:
         answer:
