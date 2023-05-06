@@ -43,6 +43,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/admin' => "homes#top"
+    resources :images, only: [:new, :create]
     # get "search" => "searches#search"
     get "search" => "searches#index"
     resources :questions, only: [:new, :create, :index, :edit, :update, :destroy]

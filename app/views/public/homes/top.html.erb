@@ -1,11 +1,19 @@
 <p id="notice"></p>
 <div class="container">
   <div class="row">
-    <div class="col-md-12 text-center">
 
+    <div class="col-md-12 text-center">
       <%= link_to questions_path, class: "btn btn-primary btn-lg" do %>
         質問一覧をみる
       <% end %>
     </div>
+
+    <div class="col-md-12 text-center">
+      <p>画像</p>
+      <div><%= image_tag @image.image, size: "400x400" %></div>
+    </div>
+
   </div>
 </div>
+
+
