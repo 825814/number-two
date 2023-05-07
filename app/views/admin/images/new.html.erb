@@ -1,20 +1,47 @@
-<h1>ユーザー側のトップページで表示する</h1>
+<p id="notice"></p>
+<div class="container">
 
-<%= form_with model: @image, url:'/admin/images', method: :post do |f| %>
+  <div class="row mb-3">
+    <h3>ユーザー側のトップページで表示するテーマとイメージ画像を投稿します。</h3>
+  </div>
 
-  <!--<h4>テーマ</h4>-->
-  <!--<%#= f.text_field :title %>-->
+  <%= form_with model: @image, url:'/admin/images', method: :post do |f| %>
 
-  <h4>画像</h4>
-  <%= f.file_field :image, accept: "image/*" %>
+  <div class="row mb-3">
+    <%= f.label :title, "テーマ", class: "col-md-2 offset-md-2" %>
+    <div class="col-md-5">
+    <%= f.text_field :title, placeholder: "テーマを入力してください。", class: "form-control" %>
+    </div>
+  </div>
 
-  <%= f.submit '投稿' %>
+  <div class="row mb-3">
+    <%= f.label :image, "イメージ画像", class: "col-md-2 offset-md-2" %>
+    <div class="col-md-5">
+    <%= f.file_field :image, accept: "image/*" %>
+    </div>
+  </div>
 
-<% end %>
+  <div class="row mb-5">
+    <div class="col-md-12 text-center">
+      <%= f.submit '投稿', class: "btn btn-success" %>
+    </div>
+  </div>
+
+  <% end %>
 
 
-<% if Image.first.image.attached? %>
-  <%= image_tag Image.first.image, size: "600x600" %>
-<% else %>
-  <%= image_tag 'no_image.jpg' %>
-<% end %>
+  <div class="border border-success"></div>
+
+  <div class="row mt-3">
+    <div class="col-md-12 text-center">
+      <% if @image_find && @image_find.image.attached? %>
+        <h1><%= @image_find.title %></h1>
+        <%= image_tag @image_find.image, size: "600x600" %>
+      <% else %>
+        <%= image_tag 'no_image.jpg' %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+

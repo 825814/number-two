@@ -1,21 +1,22 @@
 <p id="notice"></p>
 <div class="container">
-  <div class="row">
 
+  <div class="row mb-3">
+    <div class="col-md-12 text-center">
+      <!--<div><%#= image_tag @image.image, size: "600x600" %></div>-->
+      <h1><%= @image.title %></h1>
+      <div><%= image_tag @image_url, size: "600x600" %></div>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col-md-12 text-center">
       <%= link_to questions_path, class: "btn btn-primary btn-lg" do %>
         質問一覧をみる
       <% end %>
     </div>
-
-    <div class="col-md-12 text-center">
-      <!--<div><%#= image_tag @image.image, size: "600x600" %></div>-->
-      
-      <!--<div><%#= image.title %></div>-->
-      <div><%= image_tag @image_url, size: "600x600" %></div>
-    </div>
-
   </div>
+
 </div>
 
 

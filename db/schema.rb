@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2023_05_06_091537) do
 
   create_table "images", force: :cascade do |t|
     t.integer "admin_id", null: false
+    t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
