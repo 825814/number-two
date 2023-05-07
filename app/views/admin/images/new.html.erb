@@ -2,10 +2,19 @@
 
 <%= form_with model: @image, url:'/admin/images', method: :post do |f| %>
 
+  <!--<h4>テーマ</h4>-->
+  <!--<%#= f.text_field :title %>-->
 
   <h4>画像</h4>
   <%= f.file_field :image, accept: "image/*" %>
 
   <%= f.submit '投稿' %>
 
+<% end %>
+
+
+<% if Image.first.image.attached? %>
+  <%= image_tag Image.first.image, size: "600x600" %>
+<% else %>
+  <%= image_tag 'no_image.jpg' %>
 <% end %>
