@@ -1,4 +1,6 @@
 class Admin::ImagesController < ApplicationController
+  before_action :authenticate_admin!
+  
   def new
     @image = Image.new
     @image_find = Image.first

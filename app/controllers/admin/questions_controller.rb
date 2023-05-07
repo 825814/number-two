@@ -1,4 +1,5 @@
 class Admin::QuestionsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :check_answer_existence, only: [:edit, :update, :destroy]
 
   def new

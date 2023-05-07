@@ -1,9 +1,5 @@
 class Admin::AnswersController < ApplicationController
-
-  # def index
-  #   @question = Question.find(params[:question_id])
-  #   @ranking = Answer.ranking(params[:question_id])
-  # end
+before_action :authenticate_admin!
 
   def index
     @question = Question.find(params[:question_id])
@@ -40,10 +36,8 @@ class Admin::AnswersController < ApplicationController
 
     @favorite_comments = current_admin.favorites.map{ |f| f.answer.comment }.compact
     @comments = @answers.map(&:comment) & @favorite_comments
-# Student.where(gender: "女性").where("age > ?", 16)
-    # && @answers =  @choice.answers
   end
 
-  # 
+  #
 
 end
