@@ -11,22 +11,41 @@
 
       <% if @all_ranks.present? %>
         <% @all_ranks.each.with_index(1) do |choice, i| %>
-        <tr>
-          <td><%= i %>位</td>
-          <td><%= choice.choice %></td>
-          <td>
-            <%= link_to admin_show_path(@question, choice) do %>
-            (<%= choice.answers.where(question_id: @question.id).count %>票)</td>
-            <!--<%#= choice.answers.count %>票-->
-            <!--これだと質問に紐付いていない選択肢の票数が表示される-->
-            <% end %>
-          </td>
-        </tr>
+          <!--<%# if choice.question_id == @question.id %>-->
+            <tr>
+              <td><%= i %>位</td>
+              <td><%= choice.choice %></td>
+              <td>
+                <%= link_to admin_show_path(@question, choice) do %>
+                  (<%= choice.answers.where(question_id: @question.id).count %>票)
+                <% end %>
+              </td>
+            </tr>
+          <%# end %>
         <% end %>
       <% else %>
         <p>No choices found.</p>
       <% end %>
-      
+
+
+      <!--<%# if @all_ranks.present? %>-->
+      <!--  <%# @all_ranks.each.with_index(1) do |choice, i| %>-->
+      <!--  <tr>-->
+      <!--    <td><%#= i %>位</td>-->
+      <!--    <td><%#= choice.choice %></td>-->
+      <!--    <td>-->
+      <!--      <%#= link_to admin_show_path(@question, choice) do %>-->
+      <!--      (<%#= choice.answers.where(question_id: @question.id).count %>票)-->
+                 <!--<%#= choice.answers.count %>票-->
+                 <!--これだと質問に紐付いていない選択肢の票数が表示される-->
+      <!--      <%# end %>-->
+      <!--    </td>-->
+      <!--  </tr>-->
+      <!--  <%# end %>-->
+      <!--<%# else %>-->
+      <!--  <p>No choices found.</p>-->
+      <!--<%# end %>-->
+
       </table>
     </div>
   </div>
