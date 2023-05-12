@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  validates :name, presence: true
   # has_one_attached :image
   # include Devise::Models::Guest
   # Include default devise modules. Others available are:
