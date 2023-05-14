@@ -4,7 +4,7 @@
   <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <%= form_tag admin_search_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :keyword, params[:keyword], class: "form-control me-2", type: "search", placeholder: "キーワード", aria: {label: "Search"} %>
+      <%= text_field_tag :keyword, params[:keyword], class: "form-control me-2", type: "search", placeholder: "キーワード(質問と回答を検索）", aria: {label: "Search"} %>
       <%= submit_tag "検索", class: "btn btn-outline-success", type: "submit" %>
     <% end %>
   </div>
