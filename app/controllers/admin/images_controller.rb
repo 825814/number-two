@@ -1,6 +1,6 @@
 class Admin::ImagesController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def new
     @image = Image.new
     @image_find = Image.first
@@ -15,6 +15,7 @@ class Admin::ImagesController < ApplicationController
     if @image.save
       redirect_to new_admin_image_path, notice: '投稿しました'
     else
+      flash.now[:alert] = 'イメージ画像を設定してください。'
       render :new
     end
   end
