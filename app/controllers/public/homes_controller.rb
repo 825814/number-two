@@ -17,19 +17,6 @@ class Public::HomesController < ApplicationController
   end
 
 
-  # def top
-  #   @image = Image.first
-  #   if @image.blank?
-  #     @image_url = asset_path('no_image.jpg')
-  #     @image_title = "Untitled"
-  #   else
-  #     @image_url = url_for(@image.image)
-  #     @image_title = @image.title
-  #   end
-  # end
-
-
-
 end
 
 
